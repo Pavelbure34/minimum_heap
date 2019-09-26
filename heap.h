@@ -28,8 +28,8 @@ class MinHeap{
 
         void heapSort(T sorted[]);
         string toString();//done
-        MinHeap<T> operator=(MinHeap<T>& heap);//done
-        //int getHeight();
+        void operator=(MinHeap<T>& heap);//done
+        //int height();
         //int size();
         int getCapacity();//done
 

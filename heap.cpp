@@ -52,9 +52,22 @@ string MinHeap<T>::toString(){
     return str;
 }
 
+template<>
+string MinHeap<string>::toString(){
+    string str = "[";
+    for (int i = 0; i < heapSize; i++){
+        str += *(A+i);
+        if (i != heapSize - 1){
+            str += ", ";
+        }
+    }
+    str += "]";
+    return str;
+}
+
 template<class T>
 void MinHeap<T>::heapSort(T sorted[]){
-    //??
+    sorted = A;
     int size = sizeof(sorted)/sizeof(sorted[0]);
     copy(sorted, size);
     buildHeap();
@@ -68,12 +81,12 @@ void MinHeap<T>::heapSort(T sorted[]){
 }
 
 template<class T>
-MinHeap<T> MinHeap<T>::operator=(MinHeap<T> &heap){
+void MinHeap<T>::operator=(MinHeap<T> &heap){
     copy(heap);
 }
 
 // template<class T>
-// int MinHeap<T>::getHeight(){
+// int MinHeap<T>::height(){
 //     return (int)log2(heapSize);
 // }   
 
@@ -97,7 +110,7 @@ void MinHeap<T>::heapify(int index){
         smallest = right;
 
     if (smallest != index){
-        swap(i,smallest);
+        swap(index,smallest);
         heapify(smallest);
     }
 }
