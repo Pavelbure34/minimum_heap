@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <typeinfo>
+#include "assert.h"
 using namespace std;
 
 /*
@@ -26,12 +28,17 @@ class MinHeap{
         MinHeap(const MinHeap<T>& heap);//done
         ~MinHeap();//done
 
-        void heapSort(T sorted[]);
+        void heapSort(T *sorted,  int size);
         string toString();//done
         void operator=(MinHeap<T>& heap);//done
         //int height();
         //int size();
         int getCapacity();//done
+        friend ostream& operator<<(ostream &o, MinHeap<T> &heap){
+            //this friend function enables osteam operator.
+            o << heap.toString();
+            return o;
+        }
 
     private:
         void heapify(int index);
@@ -46,6 +53,12 @@ class MinHeap{
         void destroy();//done
         void doubleUp();//done
 };
+
+template<class T>
+void showArr(T *item, int size);
+
+template<>
+void showArr(string *item, int size);
 
 #include "heap.cpp"
 #endif
