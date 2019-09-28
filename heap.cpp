@@ -12,8 +12,7 @@ MinHeap<T>::MinHeap(int n){             //constructor #1
         This is constructor generating empty heap with given size.
         If size n is not given, it is set by default value of 0.
     */
-    heapSize = n;
-    capacity = heapSize * 2;
+    heapSize = capacity = n;
     A = new T[capacity];
 }
 
@@ -22,8 +21,7 @@ MinHeap<T>::MinHeap(T initA[], int n){  //constructor #2
     //This is constructor generating empty heap with given array and size.
     A = new T[n];
     copy(initA, n);
-    heapSize = n;
-    capacity = 2 * n;
+    heapSize = capacity =n;
     buildHeap();
 }
 
@@ -59,6 +57,26 @@ string MinHeap<T>::toString(){//original toString function
     return str;
 }
 
+template<class T>
+bool MinHeap<T>::isEmpty(){
+    return (heapSize == 0)?true:false;
+}
+
+template<class T>
+int MinHeap<T>::heapsize(){
+    return heapSize;
+}
+
+template<class T>
+int MinHeap<T>::cap(){
+    return capacity;
+}
+
+template<class T>
+T MinHeap<T>::getMin(){
+    return A[0];
+}
+
 template<>
 string MinHeap<string>::toString(){
     //this is toString for string data type.
@@ -75,28 +93,17 @@ string MinHeap<string>::toString(){
 }
 
 template<class T>
-void MinHeap<T>::heapSort(T *sorted, int size){
-    //storing original value
-    MinHeap<T> *temp = new MinHeap<T>(A,heapSize);
-    int tempSize = heapSize;
-    int tempCap = capacity;
-
+void MinHeap<T>::heapSort(T *sorted){
     //sorted outside source
-    copy(sorted, size);
-    heapSize = size;
-    capacity = size * 2;
+    int size = heapSize;
+    copy(sorted, heapSize);
     buildHeap();
-    for (int i = heapSize; i >= 2;i--){
+    for (int i = capacity; i > 1;i--){
         swap(1,i);
         heapSize--;
         heapify(1);
     }
-
-    //returning to original value;
-    copy(*temp);
-    heapSize = tempSize;
-    capacity = tempCap;
-    delete temp;
+    heapSize = size;
 }
 
 template<class T>
@@ -104,47 +111,32 @@ void MinHeap<T>::operator=(MinHeap<T> &heap){
     copy(heap);
 }
 
-// template<class T>
-// int MinHeap<T>::height(){
-//     return (int)log2(heapSize);
-// }   
-
-// template<class T>
-// int MinHeap<T>::size(){
-//     return heapSize;
-// }
+template<class T>
+void MinHeap<T>::buildHeap(){
+    heapSize = capacity;
+    for (int i = capacity/2 ; i > 0; i--)
+        heapify(i-1);
+}
 
 //private member funcions
 template<class T>
 void MinHeap<T>::heapify(int index){
     int left = leftChild(index);
     int right = rightChild(index);
-    int smallest;
-    if ((heapSize >= left) && (A[left] < A[right]))//do you have left child?
-        smallest = left;
+    int min;
+    if ((heapSize >= left) && (A[left] < A[index]))//do you have left child?
+        min = left;
     else
-        smallest = index;
+        min = index;
 
-    if ((heapSize >= right) && (A[right] < A[smallest]))//do you have right child?
-        smallest = right;
+    if ((heapSize >= right) && (A[right] < A[min]))//do you have right child?
+        min = right;
 
-    if (smallest != index){
-        swap(index,smallest);
-        heapify(smallest);
+    if (min != index){
+        swap(index,min);
+        heapify(min);
     }
 }
-
-template<class T>
-void MinHeap<T>::buildHeap(){
-    for (int i = capacity/2 ; i > 0; i--)
-        heapify(i);
-}
-
-template<class T>
-int MinHeap<T>::getCapacity(){
-    return capacity;
-}
-
 
 template<class T>
 int MinHeap<T>::leftChild(int index){
@@ -188,21 +180,9 @@ void MinHeap<T>::copy(T *copyA, int size){
 
 template<class T>
 void MinHeap<T>::destroy(){
-    delete A;
-    heapSize = 0;
-    capacity = 0;
+    delete[] A;
+    heapSize = capacity = 0;
 }
-
-template<class T>
-void MinHeap<T>::doubleUp(){
-    capacity = capacity * 2;
-    T* newA = new T[capacity];  
-    for (int i = 0; i < heapSize; i++){
-        newA[i] = *(A+i);
-    }
-    A = newA;
-    delete newA;
-}     
 //}
 
 template<class T>
@@ -229,4 +209,4 @@ void showArr(string *item, int size){
     }
     str += "}";
     LOG1(str);
-}  
+}

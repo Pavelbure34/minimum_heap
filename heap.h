@@ -13,7 +13,10 @@ using namespace std;
 */
 
 #define LOG1(x) cout << x << endl;
+#define LOG2(x, y) cout << x << y << endl;
 #define DEFAULT_SIZE 0
+#define BR_ "-===============================================-"
+#define TERMINATE "freeing memories"
 
 template<class T>
 class MinHeap{
@@ -28,12 +31,13 @@ class MinHeap{
         MinHeap(const MinHeap<T>& heap);//done
         ~MinHeap();//done
 
-        void heapSort(T *sorted,  int size);
+        void heapSort(T *sorted);
         string toString();//done
         void operator=(MinHeap<T>& heap);//done
-        //int height();
-        //int size();
-        int getCapacity();//done
+        bool isEmpty();
+        int heapsize();
+        int cap();
+        T getMin();
         friend ostream& operator<<(ostream &o, MinHeap<T> &heap){
             //this friend function enables osteam operator.
             o << heap.toString();
@@ -51,7 +55,6 @@ class MinHeap{
         void copy(const MinHeap<T> &heap);//done
         void copy(T *copyA, int size);//done
         void destroy();//done
-        void doubleUp();//done
 };
 
 template<class T>
