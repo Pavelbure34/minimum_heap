@@ -20,7 +20,7 @@ template<class T>
 MinHeap<T>::MinHeap(T initA[], int n){  //constructor #2
     //This is constructor generating empty heap with given array and size.
     A = new T[n];             //settubg up A
-    copy(initA, n);           //copy the list from argument into this. 
+    copy(initA, n);           //copy the list from argument into this.
     heapSize = capacity = n;  //setting up heapsize and capacity
     buildHeap();              //making it into a heap structure.
 }
@@ -106,7 +106,7 @@ void MinHeap<T>::heapSort(T *sorted){
     int size = heapSize;                       //storing heapSize for restoring after the loop.
     A = sorted;                                //shallow copy of the target array
     buildHeap();                               //making it into heap structure first
-    for (int i = capacity - 1; i >= 0; i--){   
+    for (int i = capacity - 1; i >= 0; i--){
         swap(0,i);                             //swap A[0] and A[n]
         heapSize--;                            //in order to exclude A[n] for heapify
         heapify(0);                            //heapify under mutated heapsize
@@ -120,7 +120,7 @@ void MinHeap<T>::buildHeap(){
     //this function makes the given array A into heap structure.
     heapSize = capacity;
     for (int i = (capacity/2) - 1; i >= 0; i--)
-        heapify(i);              
+        heapify(i);
 }
 
 //private member funcions
@@ -175,7 +175,7 @@ template<class T>
 void MinHeap<T>::copy(const MinHeap<T> &heap){
     //this function deep copies heap into A based on heap input.
     heapSize = heap.heapSize;
-    capacity = heap.capacity;  
+    capacity = heap.capacity;
     A = new T[heap.capacity];
     for (int i = 0; i < heapSize; i++){
         A[i] = *(heap.A+i);
