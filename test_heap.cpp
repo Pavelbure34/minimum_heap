@@ -170,13 +170,16 @@ int main(){
         in ascending order.
     */
     assert(intSorted[0] == 1);
+    assert(intSorted[1] == 2);
     assert(intSorted[3] == 4);
     assert(intSorted2[0] == 1);
+    assert(intSorted2[2] == 3);
     assert(intSorted2[49] == 50);
     assert(doubleSorted[0] == 1.100000);
     assert(floatSorted[0] == 1.9f);
     assert(floatSorted[9] == 20.99f);
     assert(charSorted[0] == 65);
+    assert(charSorted[1] == 66);
     assert(charSorted[5] == 99);
     assert(strSorted[0] == "Hola");
     assert(strSorted[2] == "amigo");
