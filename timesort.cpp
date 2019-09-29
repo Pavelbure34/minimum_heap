@@ -1,5 +1,5 @@
 #include "heap.h"
-#include <sys/time.h>
+#include "sys_time.h"
 
 int main{
     int *testArr1 = new int[50];
