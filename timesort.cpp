@@ -1,7 +1,7 @@
+#include <sys/time.h>
 #include "heap.h"
-#include "sys_time.h"
 
-int main{
+int main(){
     int *testArr1 = new int[50];
     int *testArr2 = new int[75];
     int *testArr3 = new int[100];
@@ -37,7 +37,7 @@ int main{
     long diffSeconds, diffUSeconds;
 
     //1st testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test1(testArr1, 50);
@@ -50,7 +50,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //2st testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test2(testArr2, 75);
@@ -63,7 +63,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //3rd testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test3(testArr3, 100);
@@ -76,7 +76,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //4th testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test4(testArr4, 125);
@@ -89,7 +89,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //5th testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test5(testArr5, 150);
@@ -102,7 +102,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //6st testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test6(testArr6, 175);
@@ -115,7 +115,7 @@ int main{
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
 
     //7st testing
-    gettimeofday(&timebefore, NULL);
+    gettimeofday(&timeBefore, NULL);
 
     //call sorting method here.
     MinHeap<int> test7(testArr7, 200);
@@ -126,5 +126,4 @@ int main{
     diffUSeconds = timeAfter.tv_usec = timeBefore.tv_usec;
 
     cout << diffSeconds + diffUSeconds/1000000.0 << "seconds" << endl;
-    return 0;
 }
