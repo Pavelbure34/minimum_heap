@@ -4,7 +4,7 @@ int main(){
     //setting up the initial arrays
     int intArr[6] = {6,5,4,1,2,3};
     double doubleArr[6] = {2.2,1.0,5.3,4.3,3.3,6.3};
-    float floatArr[6] = {2.3,1.6,4.8,3.4,5.9,6.8};
+    float floatArr[6] = {2.3f,1.6f,4.8f,3.4f,5.9f,6.8f};
     char charArr[6] = {'A','B','C','a','b','c'};
     string strArr[6] = {"hallo","meinen","freunden","Guten Tag","Guten Abend","Gute Nacht"};
     int size = 6;
@@ -63,7 +63,7 @@ int main(){
     MinHeap<string> copystrHeap2 = copystrHeap;
 
     /*
-        This tests whether copied heap using either 
+        This tests whether copied heap using either
         assingment operator or copy constructor shares
         the identical A within themselves.
     */
@@ -115,37 +115,37 @@ int main(){
     int *intSorted2 = new int[50];
     for (int i = 0; i < 50; i++)
         intSorted2[i] = 50 - i;
-    
+
     intSorted[0] = 1;
     intSorted[1] = 5;
     intSorted[2] = 2;
     intSorted[3] = 3;
     intSorted[4] = 4;
-    
+
     doubleSorted[0] = 1.1;
     doubleSorted[1] = 3.1;
     doubleSorted[2] = 2.2;
     doubleSorted[3] = 5.6;
     doubleSorted[4] = 4.5;
 
-    floatSorted[0] = 12.99;
-    floatSorted[1] = 4.8;
-    floatSorted[2] = 14.99;
-    floatSorted[3] = 2.5;
-    floatSorted[4] = 5.56;
-    floatSorted[5] = 8.99;
-    floatSorted[6] = 20.99;
-    floatSorted[7] = 10.99;
-    floatSorted[8] = 3.6;
-    floatSorted[9] = 1.9;
-    
+    floatSorted[0] = 12.99f;
+    floatSorted[1] = 4.8f;
+    floatSorted[2] = 14.99f;
+    floatSorted[3] = 2.5f;
+    floatSorted[4] = 5.56f;
+    floatSorted[5] = 8.99f;
+    floatSorted[6] = 20.99f;
+    floatSorted[7] = 10.99f;
+    floatSorted[8] = 3.6f;
+    floatSorted[9] = 1.9f;
+
     charSorted[0] = 'a';
     charSorted[1] = 'b';
     charSorted[2] = 'c';
     charSorted[3] = 'A';
     charSorted[4] = 'B';
     charSorted[5] = 'C';
-    
+
     strSorted[0] = "Hola";
     strSorted[1] = "amigo";
     strSorted[2] = "Bonjour";
@@ -166,7 +166,7 @@ int main(){
     strHeap2.heapSort(strSorted);
 
     /*
-        This tests whether the sorted list is 
+        This tests whether the sorted list is
         in ascending order.
     */
     assert(intSorted[0] == 1);
@@ -191,6 +191,6 @@ int main(){
     delete[] floatSorted;
     delete[] charSorted;
     delete[] strSorted;
-    
+
     //testing destructor and destroy which is embedded there
 }
