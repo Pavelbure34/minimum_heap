@@ -12,6 +12,7 @@ using namespace std;
 
 #define LOG1(x) cout << x << endl;
 #define LOG2(x, y) cout << x << y << endl;
+#define LOG3(x, y, z) cout << x << " " << y << " = "<< z << endl;
 #define DEFAULT_SIZE 0
 #define BR_ "-===============================================-"
 

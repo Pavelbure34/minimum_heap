@@ -101,8 +101,8 @@ void MinHeap<T>::operator=(MinHeap<T> &heap){
 
 template<class T>
 void MinHeap<T>::heapSort(T *sorted){
-    //sort the array in the ascending order.
-                                               //1. sort in descending order.
+    //this function sorts the array in the ascending order.
+    //1. sort in descending order.
     int size = heapSize;                       //storing heapSize for restoring after the loop.
     A = sorted;                                //shallow copy of the target array
     buildHeap();                               //making it into heap structure first
