@@ -1,7 +1,7 @@
 #include "heap.h"
 
 int main(){
-    //setting up
+    //setting up the initial arrays
     int intArr[6] = {6,5,4,1,2,3};
     double doubleArr[6] = {2.2,1.0,5.3,4.3,3.3,6.3};
     float floatArr[6] = {2.3,1.6,4.8,3.4,5.9,6.8};
@@ -66,104 +66,112 @@ int main(){
     assert(copyCharHeap.getMin() == copyCharHeap2.getMin());
 
     //testing toString(),embedded in << stream opretor, and << stream operator
-    // LOG2("intHeap = ", intHeap);
-    // LOG2("doubleHeap = ", doubleHeap);
-    // LOG2("floatHeap = ", floatHeap);
-    // LOG2("charHeap = ", charHeap);
-    // LOG2("stringHeap = ", stringHeap);
-    // LOG2("intHeap1 = ", intHeap1);
-    // LOG2("doubleHeap1 = ", doubleHeap1);
-    // LOG2("floatHeap1 = ", floatHeap1);
-    // LOG2("charHeap1 = ", charHeap1);
-    // LOG2("stringHeap1 = ", stringHeap1);
-    // LOG2("copyIntHeap = ", copyIntHeap);
-    // LOG2("copyDoubleHeap = ", copyDoubleHeap);
-    // LOG2("copyFloatHeap = ", copyFloatHeap);
-    // LOG2("copyCharHeap = ", copyCharHeap);
-    // LOG2("copystrHeap = ", copystrHeap);
-    // LOG2("copyIntHeap1 = ", copyIntHeap1);
-    // LOG2("copyDoubleHeap1 = ", copyDoubleHeap1);
-    // LOG2("copyFloatHeap1 = ", copyFloatHeap1);
-    // LOG2("copyCharHeap1 = ", copyCharHeap1);
-    // LOG2("copystrHeap1 = ", copystrHeap1);
-    // LOG2("copyIntHeap2 = ", copyIntHeap2);
-    // LOG2("copyDoubleHeap2 = ", copyDoubleHeap2);
-    // LOG2("copyFloatHeap2 = ", copyFloatHeap2);
-    // LOG2("copyCharHeap2 = ", copyCharHeap2);
-    // LOG2("copystrHeap2 = ", copystrHeap2);
-    // LOG1(BR_);
+    LOG2("intHeap = ", intHeap);
+    LOG2("doubleHeap = ", doubleHeap);
+    LOG2("floatHeap = ", floatHeap);
+    LOG2("charHeap = ", charHeap);
+    LOG2("stringHeap = ", stringHeap);
+    LOG2("intHeap1 = ", intHeap1);
+    LOG2("doubleHeap1 = ", doubleHeap1);
+    LOG2("floatHeap1 = ", floatHeap1);
+    LOG2("charHeap1 = ", charHeap1);
+    LOG2("stringHeap1 = ", stringHeap1);
+    LOG2("copyIntHeap = ", copyIntHeap);
+    LOG2("copyDoubleHeap = ", copyDoubleHeap);
+    LOG2("copyFloatHeap = ", copyFloatHeap);
+    LOG2("copyCharHeap = ", copyCharHeap);
+    LOG2("copystrHeap = ", copystrHeap);
+    LOG2("copyIntHeap1 = ", copyIntHeap1);
+    LOG2("copyDoubleHeap1 = ", copyDoubleHeap1);
+    LOG2("copyFloatHeap1 = ", copyFloatHeap1);
+    LOG2("copyCharHeap1 = ", copyCharHeap1);
+    LOG2("copystrHeap1 = ", copystrHeap1);
+    LOG2("copyIntHeap2 = ", copyIntHeap2);
+    LOG2("copyDoubleHeap2 = ", copyDoubleHeap2);
+    LOG2("copyFloatHeap2 = ", copyFloatHeap2);
+    LOG2("copyCharHeap2 = ", copyCharHeap2);
+    LOG2("copystrHeap2 = ", copystrHeap2);
+    LOG1(BR_);
 
-    //setting up 
-    int *intSorted = new int[4];
+    //setting up for testing heapsort
+    int *intSorted = new int[5];
     double *doubleSorted = new double[5];
     float *floatSorted = new float[10];
     char *charSorted = new char[6];
-    string *strSorted = new string[2];
-
-    intSorted[0]=1;
-    intSorted[1]=2;
-    intSorted[2]=3;
-    intSorted[3]=4;
+    string *strSorted = new string[3];
+    int *intSorted2 = new int[50];
+    for (int i = 0; i < 50; i++)
+        intSorted2[i] = 50 - i;
     
-    doubleSorted[0]=1.0;
-    doubleSorted[1]=3.1;
-    doubleSorted[2]=2.2;
-    doubleSorted[3]=4.5;
-    doubleSorted[4]=5.6;
-
-    floatSorted[0]=2.5;
-    floatSorted[1]=1.9;
-    floatSorted[2]=4.8;
-    floatSorted[3]=3.6;
-    floatSorted[4]=5.56;
-    floatSorted[5]=8.99;
-    floatSorted[6]=20.99;
-    floatSorted[7]=12.99;
-    floatSorted[8]=14.99;
-    floatSorted[9]=10.99;
+    intSorted[0] = 1;
+    intSorted[1] = 5;
+    intSorted[2] = 2;
+    intSorted[3] = 3;
+    intSorted[4] = 4;
     
-    charSorted[0]='a';
-    charSorted[1]='b';
-    charSorted[2]='c';
-    charSorted[3]='A';
-    charSorted[4]='B';
-    charSorted[5]='C';
-    
-    strSorted[0]="Hola";
-    strSorted[1]="amigo";
+    doubleSorted[0] = 1.1;
+    doubleSorted[1] = 3.1;
+    doubleSorted[2] = 2.2;
+    doubleSorted[3] = 5.6;
+    doubleSorted[4] = 4.5;
 
-    MinHeap<int> intHeap2(intSorted, 4);
+    floatSorted[0] = 12.99;
+    floatSorted[1] = 4.8;
+    floatSorted[2] = 14.99;
+    floatSorted[3] = 2.5;
+    floatSorted[4] = 5.56;
+    floatSorted[5] = 8.99;
+    floatSorted[6] = 20.99;
+    floatSorted[7] = 10.99;
+    floatSorted[8] = 3.6;
+    floatSorted[9] = 1.9;
+    
+    charSorted[0] = 'a';
+    charSorted[1] = 'b';
+    charSorted[2] = 'c';
+    charSorted[3] = 'A';
+    charSorted[4] = 'B';
+    charSorted[5] = 'C';
+    
+    strSorted[0] = "Hola";
+    strSorted[1] = "amigo";
+    strSorted[2] = "Bonjour";
+
+    MinHeap<int> intHeap2(intSorted, 5);
+    MinHeap<int> intHeap3(intSorted2, 50);
     MinHeap<double> doubleHeap2(doubleSorted, 5);
     MinHeap<float> floatHeap2(floatSorted, 10);
     MinHeap<char> charHeap2(charSorted, 6);
-    MinHeap<string> strHeap2(strSorted, 2);
+    MinHeap<string> strHeap2(strSorted, 3);
 
     //testing heap sort and build heap and heapify
-    // intHeap2.heapSort(intSorted);
-    // doubleHeap2.heapSort(doubleSorted);
-    // floatHeap2.heapSort(floatSorted);
-    // charHeap2.heapSort(charSorted);
-    // strHeap2.heapSort(strSorted);
-
-    showArr(intSorted, 4);
-    showArr(doubleSorted, 5);
-    showArr(floatSorted, 10);
-    showArr(charSorted, 6);
-    showArr(strSorted, 2);
+    intHeap2.heapSort(intSorted);
+    intHeap3.heapSort(intSorted2);
+    doubleHeap2.heapSort(doubleSorted);
+    floatHeap2.heapSort(floatSorted);
+    charHeap2.heapSort(charSorted);
+    strHeap2.heapSort(strSorted);
 
     //unit testing
-    // assert(intSorted[0]=1);
-    // assert(doubleSorted[0]=1.0);
-    // assert(floatSorted[0]=1.9);
-    // assert(charSorted[0]=65);
+    assert(intSorted[0] == 1);
+    assert(intSorted[3] == 4);
+    assert(intSorted2[0] == 1);
+    assert(intSorted2[49] == 50);
+    assert(doubleSorted[0] == 1.100000);
+    assert(floatSorted[0] == 1.9f);
+    assert(floatSorted[9] == 20.99f);
+    assert(charSorted[0] == 65);
+    assert(charSorted[5] == 99);
+    assert(strSorted[0] == "Hola");
+    assert(strSorted[2] == "amigo");
 
-    // LOG1(TERMINATE);
-
-    // //deleting test arrays
-    // delete[] intSorted;
-    // delete[] doubleSorted;
-    // delete[] charSorted;
-    // delete[] strSorted;
+    //deleting test arrays
+    delete[] intSorted;
+    delete[] intSorted2;
+    delete[] doubleSorted;
+    delete[] floatSorted;
+    delete[] charSorted;
+    delete[] strSorted;
     
     //testing destructor and destroy which is embedded there
 }

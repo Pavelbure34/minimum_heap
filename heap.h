@@ -2,8 +2,6 @@
 #define HEAP_H
 #include <iostream>
 #include <string>
-#include <cmath>
-#include <typeinfo>
 #include "assert.h"
 using namespace std;
 
@@ -16,7 +14,6 @@ using namespace std;
 #define LOG2(x, y) cout << x << y << endl;
 #define DEFAULT_SIZE 0
 #define BR_ "-===============================================-"
-#define TERMINATE "freeing memories"
 
 template<class T>
 class MinHeap{
@@ -51,10 +48,11 @@ class MinHeap{
         int leftChild(int index);
         int rightChild(int index);
         int parent(int index);
-        void swap(int index1, int index2);//done
-        void copy(const MinHeap<T> &heap);//done
-        void copy(T *copyA, int size);//done
-        void destroy();//done
+        void swap(int index1, int index2);
+        void copy(const MinHeap<T> &heap);
+        void copy(T *copyA, int size);
+        void destroy();
+        void reverse();
 };
 
 template<class T>
