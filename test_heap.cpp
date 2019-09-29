@@ -16,6 +16,10 @@ int main(){
     MinHeap<char> charHeap;
     MinHeap<string> stringHeap;
 
+    /*
+        This tests emmpty heap is really empty
+        using isEmpty() functions.
+    */
     assert(intHeap.isEmpty() == 1);
     assert(doubleHeap.isEmpty() == 1);
     assert(floatHeap.isEmpty() == 1);
@@ -29,6 +33,10 @@ int main(){
     MinHeap<char> charHeap1(6);
     MinHeap<string> stringHeap1(9);
 
+    /*
+        This tests whehter heapSize and capacity
+        are identical when heap is generated
+    */
     assert(intHeap1.cap() == intHeap1.heapsize());
     assert(doubleHeap1.cap() == doubleHeap1.heapsize());
     assert(floatHeap1.cap() == floatHeap1.heapsize());
@@ -54,6 +62,11 @@ int main(){
     MinHeap<char> copyCharHeap2 = copyCharHeap;
     MinHeap<string> copystrHeap2 = copystrHeap;
 
+    /*
+        This tests whether copied heap using either 
+        assingment operator or copy constructor shares
+        the identical A within themselves.
+    */
     assert(copyIntHeap.getMin() == copyIntHeap1.getMin());
     assert(copyIntHeap.getMin() == copyIntHeap2.getMin());
     assert(copyDoubleHeap.getMin() == copyDoubleHeap1.getMin());
@@ -152,7 +165,10 @@ int main(){
     charHeap2.heapSort(charSorted);
     strHeap2.heapSort(strSorted);
 
-    //unit testing
+    /*
+        This tests whether the sorted list is 
+        in ascending order.
+    */
     assert(intSorted[0] == 1);
     assert(intSorted[3] == 4);
     assert(intSorted2[0] == 1);
