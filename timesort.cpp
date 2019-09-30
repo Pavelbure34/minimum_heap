@@ -1,6 +1,7 @@
 #include "heap.h"
 #include "otherSort.h"
 #include <sys/time.h>
+#include <fstream>
 
 #define LOG(x, y, z) std::cout <<  x << " " << y << " = " << z << std::endl;
 
@@ -19,6 +20,10 @@ void dataFill(T *arr, int rep){
 
 template<class T>
 void heapSortTest(T *arr){
+    ofstream file;
+    file.open("heapSort.csv");
+    file << "dataSize, runTime\n";
+
     MinHeap<int> *testHeap;
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
@@ -33,14 +38,20 @@ void heapSortTest(T *arr){
         gettimeofday(&timeAfter, NULL);
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
-        LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
+        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
         delete testHeap;
         arr = NULL;
     }
+    file.close();
 }
 
 template<class T>
 void mergeSortTest(T *arr){
+    ofstream file;
+    file.open("mergeSort.csv");
+    file << "dataSize, runTime\n";
+
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
     for (int i = 1000; i <= 100000; i += 500){
@@ -53,13 +64,19 @@ void mergeSortTest(T *arr){
         gettimeofday(&timeAfter, NULL);
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
-        LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
+        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
         arr = NULL;
     }
+    file.close();
 }
 
 template<class T>
 void insertSortTest(T *arr){
+    ofstream file;
+    file.open("insertSort.csv");
+    file << "dataSize, runTime\n";
+
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
     for (int i = 1000; i <= 100000; i += 500){
@@ -72,9 +89,11 @@ void insertSortTest(T *arr){
         gettimeofday(&timeAfter, NULL);
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
-        LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
+        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
         arr = NULL;
     }
+    file.close();
 }
 
 int main(){
@@ -87,4 +106,6 @@ int main(){
 
     LOG1("insertSort Testing");
     insertSortTest(testArr);
+
+    LOG1("Testing Complete");
 }
