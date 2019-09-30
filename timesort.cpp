@@ -7,80 +7,98 @@
 
 template<class T>
 void heapSortTest(T *arr){
-    ofstream file;
-    file.open("heapSort.csv");
-    file << "dataSize, runTime\n";
+    /*
+        This function runs the heapSort
+        of data size from 500 to 10500 with
+        the interval of 100.
+    */
+    ofstream file;                          //setting up for csv writing
+    file.open("heapSort.csv");              //writing csv files
+    file << "dataSize, runTime\n";          //writing column
 
-    MinHeap<int> *testHeap;
-    timeval timeBefore, timeAfter;
-    long diffSeconds, diffUSeconds;
-    for (int i = 500; i <= 10500; i += 100){
+    MinHeap<int> *testHeap;                 //setting up for heapSort tesing
+    timeval timeBefore, timeAfter;          //time variables
+    long diffSeconds, diffUSeconds;           
+    for (int i = 500; i <= 10500; i += 100){//testing with different size of data
         arr = new int[i];
-        for (int j = 0; j < i; j++){
+        for (int j = 0; j < i; j++){        //writing on arr
             arr[j] = i - j;
         }
-        gettimeofday(&timeBefore, NULL);
+        gettimeofday(&timeBefore, NULL);     //time count init
         testHeap = new MinHeap<int>(arr, i);
-        testHeap->heapSort(arr);
-        gettimeofday(&timeAfter, NULL);
+        testHeap->heapSort(arr);              //actual sorting happens here.
+        gettimeofday(&timeAfter, NULL);       //time count done
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
-        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
-        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";//writing on csv
+        
+        //freeing up memory for next iteration
         delete testHeap;
         arr = NULL;
     }
-    file.close();
+    file.close(); //closing the file when writing is done.
 }
 
 template<class T>
 void mergeSortTest(T *arr){
-    ofstream file;
-    file.open("mergeSort.csv");
-    file << "dataSize, runTime\n";
+    /*
+        This function runs the mergeSort
+        of data size from 500 to 10500 with
+        the interval of 100.
+    */
+    ofstream file;                          //setting up for csv writing
+    file.open("mergeSort.csv");             //writing csv files
+    file << "dataSize, runTime\n";          //writing column
 
-    timeval timeBefore, timeAfter;
+    timeval timeBefore, timeAfter;          //time variables
     long diffSeconds, diffUSeconds;
-    for (int i = 500; i <= 10500; i += 100){
+    for (int i = 500; i <= 10500; i += 100){//testing with different size of data
         arr = new int[i];
-        for (int j = 0; j < i; j++){
+        for (int j = 0; j < i; j++){        //writing on arr
             arr[j] = i - j;
         }
-        gettimeofday(&timeBefore, NULL);
-        mergeSort(arr, 0, i-1);
-        gettimeofday(&timeAfter, NULL);
+        gettimeofday(&timeBefore, NULL);    //time count init
+        mergeSort(arr, 0, i-1);             //actual sorting happens here.
+        gettimeofday(&timeAfter, NULL);     //time count done
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
-        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
-        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";//writing on csv
+
+        //freeing up memory for next iteration
         arr = NULL;
     }
-    file.close();
+    file.close();//closing the file when writing is done.
 }
 
 template<class T>
 void insertSortTest(T *arr){
-    ofstream file;
-    file.open("insertSort.csv");
-    file << "dataSize, InserSort\n";
+      /*
+        This function runs the insertSort
+        of data size from 500 to 10500 with
+        the interval of 100.
+    */
+    ofstream file;                                //setting up for csv writing
+    file.open("insertSort.csv");                  //writing csv files
+    file << "dataSize, InserSort\n";              //writing column
 
-    timeval timeBefore, timeAfter;
+    timeval timeBefore, timeAfter;                //time variables
     long diffSeconds, diffUSeconds;
-    for (int i = 500; i <= 10500; i += 100){
+    for (int i = 500; i <= 10500; i += 100){      //testing with different size of data
         arr = new int[i];
         for (int j = 0; j < i; j++){
             arr[j] = i - j;
         }
-        gettimeofday(&timeBefore, NULL);
-        insert_Sort(arr, i);
-        gettimeofday(&timeAfter, NULL);
+        gettimeofday(&timeBefore, NULL);         //time count init
+        insert_Sort(arr, i);                     //actual sorting happens here.
+        gettimeofday(&timeAfter, NULL);          //time count done
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
         diffUSeconds = timeAfter.tv_usec - timeBefore.tv_usec;
         file << i << "," << diffSeconds + (diffUSeconds/1000000.0) << "\n";
-        //LOG("Run time when data size is", i, diffSeconds + diffUSeconds/1000000.0);
+        
+        //freeing up memory for next iteration
         arr = NULL;
     }
-    file.close();
+    file.close();//closing the file when writing is done.
 }
 
 int main(){
