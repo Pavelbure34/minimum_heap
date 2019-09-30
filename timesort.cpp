@@ -24,8 +24,8 @@ void heapSortTest(T *arr){
         for (int j = 0; j < i; j++){        //writing on arr
             arr[j] = i - j;
         }
-        gettimeofday(&timeBefore, NULL);     //time count init
         testHeap = new MinHeap<int>(arr, i);
+        gettimeofday(&timeBefore, NULL);     //time count init
         testHeap->heapSort(arr);              //actual sorting happens here.
         gettimeofday(&timeAfter, NULL);       //time count done
         diffSeconds = timeAfter.tv_sec - timeBefore.tv_sec;
