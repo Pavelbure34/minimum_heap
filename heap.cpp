@@ -11,6 +11,9 @@ MinHeap<T>::MinHeap(int n){             //constructor #1
     /*
         This is constructor generating empty heap with given size.
         If size n is not given, it is set by default value of 0.
+
+        precondition: n has to be bigger or equal to zero.
+        postcondition: it should create an object based on this constructor. 
     */
     heapSize = capacity = n;  //setting up heapsize and capacity
     A = new T[capacity];      //setting up A
@@ -18,7 +21,12 @@ MinHeap<T>::MinHeap(int n){             //constructor #1
 
 template<class T>
 MinHeap<T>::MinHeap(T initA[], int n){  //constructor #2
-    //This is constructor generating empty heap with given array and size.
+    /*
+        This is constructor generating empty heap with given array and size.
+
+        precondition: n has to be equal to size of initA and initA has to be array of type T.
+        postcondition: it should create an object based on this constructor. 
+    */
     A = new T[n];             //settubg up A
     copy(initA, n);           //copy the list from argument into this.
     heapSize = capacity = n;  //setting up heapsize and capacity
@@ -27,7 +35,12 @@ MinHeap<T>::MinHeap(T initA[], int n){  //constructor #2
 
 template<class T>
 MinHeap<T>::MinHeap(const MinHeap<T>& heap){ //constructor #3
-    //This is constructor generating heap with another MinHeap instance.
+    /*
+        This is constructor generating heap with another MinHeap instance.
+
+        precondition: heap has to be heap based on buildheaped array.
+        postcondition: it should create an object based on this constructor. 
+    */
     copy(heap);               //copy the heap into this from argument.
 }
 //}
@@ -43,7 +56,12 @@ MinHeap<T>::~MinHeap(){ //destructor
 //public member functions{
 template<class T>
 string MinHeap<T>::toString(){//original toString function
-    //this function prints out items in the heap.
+    /*
+        this function prints out items in the heap.
+
+        precondition: none
+        postcondition: it should return a list of items in the heap.
+    */
     string str = "[";                    //string setup
     for (int i = 0; i < heapSize; i++){
         str += to_string(*(A+i));        //append each item in the heap
@@ -57,7 +75,12 @@ string MinHeap<T>::toString(){//original toString function
 
 template<>
 string MinHeap<string>::toString(){
-    //this is toString for string data type.
+    /*
+        this is toString for string data type.
+
+        precondition: none
+        postcondition: it should return a list of items in the heap.
+    */
     string str = "[";
     for (int i = 0; i < heapSize; i++){
         str += *(A+i);
@@ -71,7 +94,12 @@ string MinHeap<string>::toString(){
 
 template<class T>
 bool MinHeap<T>::isEmpty(){
-    //this function checks if the heap is empty or not.
+    /*
+        this function checks if the heap is empty or not.
+
+        precondition: *this heap object has to be legitimate.
+        postcondition: it should return a boolean value.
+    */
     return (heapSize == 0)?true:false;
 }
 
@@ -89,19 +117,34 @@ int MinHeap<T>::cap(){
 
 template<class T>
 T MinHeap<T>::getMin(){
-    //this function returns the smallest value within the heap.
+    /*
+        this function returns the smallest value within the heap.
+
+        precondition: *this heap object has to be buildheaped.
+        postcondition: it should return a smallest element in the heap.
+    */
     return A[0];
 }
 
 template<class T>
 void MinHeap<T>::operator=(MinHeap<T> &heap){
-    //this allows heap class working with assigment operator
+    /*
+        this allows heap class working with assigment operator
+
+        precondition: *this heap object has to be minHeap data.
+        postcondition: it should execute the same as copy constructor.
+    */
     copy(heap);
 }
 
 template<class T>
 void MinHeap<T>::heapSort(T *sorted){
-    //this function sorts the array in the ascending order.
+    /*
+        this function sorts the array in the ascending order.
+
+        precondition: heap has to have heap property.
+        postcondition: it should sort the heap in ascending order.
+    */
     //1. sort in descending order.
     int size = heapSize;                       //storing heapSize for restoring after the loop.
     A = sorted;                                //shallow copy of the target array
@@ -117,7 +160,12 @@ void MinHeap<T>::heapSort(T *sorted){
 
 template<class T>
 void MinHeap<T>::buildHeap(){
-    //this function makes the given array A into heap structure.
+    /*
+        this function makes the given array A into heap structure.
+
+        precondition: pointer A value has not to be NULL.
+        postcondition: it should make A have heap property.
+    */
     heapSize = capacity;
     for (int i = (capacity/2) - 1; i >= 0; i--)
         heapify(i);
@@ -126,7 +174,12 @@ void MinHeap<T>::buildHeap(){
 //private member funcions
 template<class T>
 void MinHeap<T>::heapify(int index){
-    //this function checks heap property in parent node and children nodes.
+    /*
+        this function checks heap property in parent node and children nodes.
+
+        precondition: among member in ADT, pointer A value has not to be NULL.
+        postcondition: it should swap any node who has not observed heap property.
+    */
     int left = leftChild(index);                  //left child node position
     int right = rightChild(index);                //right child node position
     int min;                                      //value to compare with
@@ -173,7 +226,12 @@ void MinHeap<T>::swap(int index1, int index2){
 
 template<class T>
 void MinHeap<T>::copy(const MinHeap<T> &heap){
-    //this function deep copies heap into A based on heap input.
+    /*
+        this function deep copies heap into A based on heap input.
+
+        precondition: *this object has to be minHeap data type.
+        postcondition: it should copy heap in argument into current heap.
+    */
     heapSize = heap.heapSize;
     capacity = heap.capacity;
     A = new T[heap.capacity];
@@ -184,7 +242,12 @@ void MinHeap<T>::copy(const MinHeap<T> &heap){
 
 template<class T>
 void MinHeap<T>::copy(T *copyA, int size){
-    //this function deep copies heap into A on array input.
+    /*
+        this function deep copies heap into A on array input.
+
+        precondition: *this object has to be minHeap data type.
+        postcondition: it should copy heap in argument into current heap.
+    */
     for (int i = 0; i < size; i++){
         A[i] = *(copyA+i);
     }
@@ -192,14 +255,24 @@ void MinHeap<T>::copy(T *copyA, int size){
 
 template<class T>
 void MinHeap<T>::destroy(){
-    //this function free up the memory allocated for A.
+    /*
+        this function free up the memory allocated for A.
+
+        precondition: *this object has to be minHeap data type.
+        postcondition: it should free up memory allocated by member A in ADT data.
+    */
     delete[] A;
     heapSize = capacity = 0;
 }
 
 template<class T>
 void MinHeap<T>::reverse(){
-    //this function reverse the array
+    /*
+        this function reverse the array
+
+        precondition: array A has to sorted in the descending order.
+        postcondition: it should reverse array A into the ascending order.
+    */
     for (int i = 0; i < capacity/2; i++){
         swap(i, capacity-i-1);
     }

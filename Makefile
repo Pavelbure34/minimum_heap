@@ -2,9 +2,6 @@ CC = g++
 CFLAG = -c
 OFLAG = -o
 
-run: timesort
-	./timesort
-
 test_heap: test_heap.o
 	$(CC) $(OFLAG) test_heap test_heap.o
 

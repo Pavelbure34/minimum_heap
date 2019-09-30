@@ -11,6 +11,9 @@ void heapSortTest(T *arr){
         This function runs the heapSort
         of data size from 500 to 10500 with
         the interval of 100.
+
+        precondition: arr has to be array of type T.
+        postcondition: output has to be csv file with run time under different data size. 
     */
     ofstream file;                          //setting up for csv writing
     file.open("heapSort.csv");              //writing csv files
@@ -45,6 +48,9 @@ void mergeSortTest(T *arr){
         This function runs the mergeSort
         of data size from 500 to 10500 with
         the interval of 100.
+
+        precondition: arr has to be array of type T.
+        postcondition: output has to be csv file with run time under different data size. 
     */
     ofstream file;                          //setting up for csv writing
     file.open("mergeSort.csv");             //writing csv files
@@ -76,6 +82,9 @@ void insertSortTest(T *arr){
         This function runs the insertSort
         of data size from 500 to 10500 with
         the interval of 100.
+
+        precondition: arr has to be array of type T.
+        postcondition: output has to be csv file with run time under different data size. 
     */
     ofstream file;                                //setting up for csv writing
     file.open("insertSort.csv");                  //writing csv files
