@@ -6,19 +6,6 @@
 #define LOG(x, y, z) std::cout <<  x << " " << y << " = " << z << std::endl;
 
 template<class T>
-void loop(T *data, int rep){
-    for (int i = 0; i < rep; i++){
-      data[i] = rep - i;
-    }
-}
-
-template<class T>
-void dataFill(T *arr, int rep){
-    arr = new T[rep];
-    loop(arr, rep);
-}
-
-template<class T>
 void heapSortTest(T *arr){
     ofstream file;
     file.open("heapSort.csv");
@@ -27,7 +14,7 @@ void heapSortTest(T *arr){
     MinHeap<int> *testHeap;
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
-    for (int i = 1000; i <= 100000; i += 500){
+    for (int i = 500; i <= 10500; i += 100){
         arr = new int[i];
         for (int j = 0; j < i; j++){
             arr[j] = i - j;
@@ -54,7 +41,7 @@ void mergeSortTest(T *arr){
 
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
-    for (int i = 1000; i <= 100000; i += 500){
+    for (int i = 500; i <= 10500; i += 100){
         arr = new int[i];
         for (int j = 0; j < i; j++){
             arr[j] = i - j;
@@ -75,11 +62,11 @@ template<class T>
 void insertSortTest(T *arr){
     ofstream file;
     file.open("insertSort.csv");
-    file << "dataSize, runTime\n";
+    file << "dataSize, InserSort\n";
 
     timeval timeBefore, timeAfter;
     long diffSeconds, diffUSeconds;
-    for (int i = 1000; i <= 100000; i += 500){
+    for (int i = 500; i <= 10500; i += 100){
         arr = new int[i];
         for (int j = 0; j < i; j++){
             arr[j] = i - j;
@@ -98,6 +85,7 @@ void insertSortTest(T *arr){
 
 int main(){
     int *testArr;
+   
     LOG1("HeapSort Testing");
     heapSortTest(testArr);
 
