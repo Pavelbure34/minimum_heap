@@ -55,7 +55,7 @@ MinHeap<T>::~MinHeap(){ //destructor
 
 //public member functions{
 template<class T>
-string MinHeap<T>::toString(){//original toString function
+string MinHeap<T>::toString() const{//original toString function
     /*
         this function prints out items in the heap.
 
@@ -74,7 +74,7 @@ string MinHeap<T>::toString(){//original toString function
 }
 
 template<>
-string MinHeap<string>::toString(){
+string MinHeap<string>::toString() const{
     /*
         this is toString for string data type.
 
@@ -93,7 +93,7 @@ string MinHeap<string>::toString(){
 }
 
 template<class T>
-bool MinHeap<T>::isEmpty(){
+bool MinHeap<T>::isEmpty() const{
     /*
         this function checks if the heap is empty or not.
 
@@ -104,19 +104,19 @@ bool MinHeap<T>::isEmpty(){
 }
 
 template<class T>
-int MinHeap<T>::heapsize(){
+int MinHeap<T>::heapsize() const{
     //this function returns the heapsize.
     return heapSize;
 }
 
 template<class T>
-int MinHeap<T>::cap(){
+int MinHeap<T>::cap() const{
     //this function returns the capacity.
     return capacity;
 }
 
 template<class T>
-T MinHeap<T>::getMin(){
+T MinHeap<T>::getMin() const{
     /*
         this function returns the smallest value within the heap.
 
@@ -134,6 +134,7 @@ void MinHeap<T>::operator=(MinHeap<T> &heap){
         precondition: *this heap object has to be minHeap data.
         postcondition: it should execute the same as copy constructor.
     */
+    destroy();
     copy(heap);
 }
 
@@ -198,19 +199,19 @@ void MinHeap<T>::heapify(int index){
 }
 
 template<class T>
-int MinHeap<T>::leftChild(int index){
+int MinHeap<T>::leftChild(int index) const{
     //this funciton returns the left child node position.
     return 2 * index;
 }
 
 template<class T>
-int MinHeap<T>::rightChild(int index){
+int MinHeap<T>::rightChild(int index) const{
     //this funciton returns the right child node position.
     return 2 * index + 1;
 }
 
 template<class T>
-int MinHeap<T>::parent(int index){
+int MinHeap<T>::parent(int index) const{
     //this funciton returns the parent node position.
     return (index - 1)/ 2;
 }

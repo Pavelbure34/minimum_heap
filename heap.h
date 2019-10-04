@@ -30,12 +30,12 @@ class MinHeap{
         ~MinHeap();//done
 
         void heapSort(T *sorted);
-        string toString();//done
+        string toString() const;//done
         void operator=(MinHeap<T>& heap);//done
-        bool isEmpty();
-        int heapsize();
-        int cap();
-        T getMin();
+        bool isEmpty() const;
+        int heapsize() const;
+        int cap() const;
+        T getMin() const;
         friend ostream& operator<<(ostream &o, MinHeap<T> &heap){
             //this friend function enables osteam operator.
             o << heap.toString();
@@ -46,9 +46,9 @@ class MinHeap{
         void heapify(int index);
         void buildHeap();
 
-        int leftChild(int index);
-        int rightChild(int index);
-        int parent(int index);
+        int leftChild(int index) const;
+        int rightChild(int index) const;
+        int parent(int index) const;
         void swap(int index1, int index2);
         void copy(const MinHeap<T> &heap);
         void copy(T *copyA, int size);
